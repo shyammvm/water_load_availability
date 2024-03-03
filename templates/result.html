@@ -13,6 +13,15 @@
             <div class="col text-center">
                 <h2>Water Availability Information for {{ city_name }}</h2>
             </div>
+            
+        </div>
+        <div class="card">
+            <div class="card-body">
+                {% if distance is defined %}
+                    <h3 class="card-title">Distance from Search Coordinates:{{ distance }} kilometers </h3>
+                    <!-- <p class="card-text">{{ distance }} kilometers</p> -->
+                {% endif %}
+            </div>
         </div>
         <div class="table-responsive">
             <table class="table table-bordered wrap" id="historicalTable">

@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 import csv
 from datetime import datetime
+from geopy.distance import geodesic
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///maindata.db'
@@ -34,7 +35,6 @@ def populate_location_data():
     with open('loc.csv', 'r', newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            # Split the coordinates string into latitude and longitude
             coordinates_str = row['Latitude, Longitude']
             latitude, longitude = map(float, coordinates_str.split(','))
 
@@ -46,7 +46,6 @@ def populate_water_availability_data():
     with open('maindata.csv', 'r', newline='') as file:
         reader = csv.DictReader(file)
         for row in reader:
-            # Convert date string to Python date object
             date_str = row['Date']
             date_obj = datetime.strptime(date_str, '%d-%m-%Y').date()
 
@@ -68,33 +67,73 @@ def get_city_names():
     city_names = [city[0] for city in city_tuples]
     return city_names
 
-# Define routes
 @app.route('/')
 def index():
-    city_names = get_city_names()  # Fetch city names here
+    city_names = get_city_names()
     return render_template('index.html', city_names=city_names)
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST'])
 def search():
-    city_names = get_city_names()  # Fetch city names here
+    city_names = get_city_names()
     if request.method == 'POST':
         dropdown_value = request.form['dropdown']
         search_text = request.form['search_text']
-        water_availability_info = WaterAvailability.query.filter_by(area=dropdown_value).all()
-        return render_template('result.html', city_name=dropdown_value, water_availability_info=water_availability_info)
+        if search_text:
+            # Check if the search text contains valid coordinates
+            try:
+                latitude, longitude = map(float, map(str.strip, search_text.split(',')))
+                print("Latitude:", latitude)
+                print("Longitude:", longitude)
+            except ValueError:
+                print("Invalid input format. Please enter latitude and longitude separated by comma.")
+                return render_template('index.html', city_names=city_names, error_message="Invalid input format. Please enter latitude and longitude separated by comma.")
+
+            # Find the nearest city based on the provided coordinates
+            nearest_city_info, error_message, distance = find_nearest_city((latitude, longitude))
+            if nearest_city_info:
+                return render_template('result.html', city_name=nearest_city_info['city_name'], water_availability_info=nearest_city_info['water_availability_info'], distance = round(distance, 3))
+            else:
+                print(error_message)
+                return render_template('index.html', city_names=city_names, error_message=error_message)
+        else:
+            # If no search text is provided, show water availability information for the selected city
+            water_availability_info = WaterAvailability.query.filter_by(area=dropdown_value).all()
+            return render_template('result.html', city_name=dropdown_value, water_availability_info=water_availability_info)
     else:
         return render_template('index.html', city_names=city_names)
 
-        # Perform search or any other action here
-        # print(f"Dropdown Value: {dropdown_value}, Search Text: {search_text}")
-    # return render_template('index.html', city_names=city_names)
+def find_nearest_city(coord):
+    given_lat, given_lon = coord
+
+    if not (-90 <= given_lat <= 90):
+        return None, "Latitude must be in the [-90; 90] range."
+
+    cities = Location.query.all()
+
+    nearest_city = None
+    min_distance = float('inf')
+
+    for city in cities:
+        city_lat, city_lon = map(float, city.coordinates.split(','))
+
+        distance = geodesic((given_lat, given_lon), (city_lat, city_lon)).kilometers
+
+        if distance < 10 and distance < min_distance:
+            min_distance = distance
+            nearest_city = city
+
+    if nearest_city:
+        water_availability_info = WaterAvailability.query.filter_by(area=nearest_city.area).all()
+        return {'city_name': nearest_city.area, 'distance': min_distance, 'water_availability_info': water_availability_info}, None, min_distance
+    else:
+        return None, "No city found within 10 km radius."
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        # Check if Location and WaterAvailability tables have records
         if not Location.query.first() and not WaterAvailability.query.first():
-            populate_location_data()  # Populate location data
-            populate_water_availability_data()  # Populate water availability data
+            populate_location_data()
+            populate_water_availability_data()
 
     app.run(debug=True)
