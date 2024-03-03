@@ -1,0 +1,52 @@
+,Site/Area Name,Date,Water Source,Water Level (in meters),Water Quality (pH),Water Quality (Turbidity),Water Availability Status,Additional Notes/Comments
+0,Koramangala,01-03-2024,Groundwater,12,7.2,5 NTU,Adequate,Recent rainfall improved groundwater levels.
+1,Jayanagar,01-03-2024,Reservoir,60%,7.0,10 NTU,Adequate,Regular supply from reservoir maintained.
+2,Malleshwaram,01-03-2024,Lake,40%,7.5,15 NTU,Insufficient,Decreased water levels in the lake due to dry weather.
+3,Indiranagar,01-03-2024,River,Flow rate: 8 cubic meters per second,7.8,8 NTU,Critical,Reduced flow in the river affecting water availability. Urgent measures required.
+4,Whitefield,01-03-2024,Reservoir,70%,7.2,12 NTU,Adequate,Regular supply from reservoir maintained.
+5,Electronic City,01-03-2024,Groundwater,15,7.0,7 NTU,Adequate,Groundwater levels stable.
+6,Yelahanka,01-03-2024,Lake,60%,7.3,20 NTU,Insufficient,Increasing demand leading to reduced lake levels.
+7,BTM Layout,01-03-2024,Reservoir,50%,7.1,8 NTU,Adequate,Moderate demand from surrounding areas.
+8,HSR Layout,01-03-2024,Groundwater,18,7.5,6 NTU,Adequate,Groundwater levels holding steady.
+9,Hebbal,01-03-2024,River,Flow rate: 6 cubic meters per second,7.6,10 NTU,Critical,Declining river flow due to upstream diversions.
+10,JP Nagar,01-03-2024,Reservoir,75%,7.2,9 NTU,Adequate,Slight decrease in reservoir levels observed.
+11,Basavanagudi,01-03-2024,Lake,45%,7.4,12 NTU,Insufficient,Below-average rainfall affecting lake levels.
+12,Rajajinagar,01-03-2024,Groundwater,14,7.3,8 NTU,Adequate,Groundwater levels normal for this time of year.
+13,Marathahalli,01-03-2024,Reservoir,65%,7.0,11 NTU,Adequate,Reservoir levels stable.
+14,Sarjapur,01-03-2024,Groundwater,16,7.1,6 NTU,Adequate,Groundwater recharging well after recent rains.
+15,Bannerghatta,01-03-2024,Lake,55%,7.5,18 NTU,Insufficient,"Water levels declining, conservation measures recommended."
+16,Basaveshwaranagar,01-03-2024,River,Flow rate: 7 cubic meters per second,7.7,9 NTU,Critical,River flow reduced due to dry spell.
+17,Koramangala,02-03-2024,Groundwater,12.5,7.1,6 NTU,Adequate,Groundwater levels rising steadily.
+18,Jayanagar,02-03-2024,Reservoir,55%,7.0,12 NTU,Adequate,"Regular supply maintained, slight decrease in reservoir levels."
+19,Malleshwaram,02-03-2024,Lake,45%,7.6,14 NTU,Insufficient,Continued decrease in lake levels. Conservation urged.
+20,Indiranagar,02-03-2024,River,Flow rate: 7 cubic meters per second,7.5,7 NTU,Critical,Urgent measures needed to address declining river flow.
+21,Whitefield,02-03-2024,Reservoir,65%,7.3,11 NTU,Adequate,Stable supply from reservoir.
+22,Electronic City,02-03-2024,Groundwater,16,7.0,6 NTU,Adequate,Groundwater levels remain steady.
+23,Yelahanka,02-03-2024,Lake,55%,7.4,22 NTU,Insufficient,Further decrease in lake levels observed.
+24,BTM Layout,02-03-2024,Reservoir,45%,7.0,9 NTU,Adequate,Moderate decrease in reservoir levels.
+25,HSR Layout,02-03-2024,Groundwater,17,7.4,7 NTU,Adequate,Groundwater levels holding steady.
+26,Hebbal,02-03-2024,River,Flow rate: 5 cubic meters per second,7.8,12 NTU,Critical,"Flow rate further reduced, immediate action required."
+27,JP Nagar,02-03-2024,Reservoir,70%,7.1,8 NTU,Adequate,Slight increase in reservoir levels noted.
+28,Basavanagudi,02-03-2024,Lake,40%,7.3,10 NTU,Insufficient,Below-average rainfall continues to impact lake levels.
+29,Rajajinagar,02-03-2024,Groundwater,13.5,7.2,7 NTU,Adequate,Groundwater levels stable.
+30,Marathahalli,02-03-2024,Reservoir,60%,7.0,10 NTU,Adequate,Reservoir levels unchanged.
+31,Sarjapur,02-03-2024,Groundwater,16.5,7.2,5 NTU,Adequate,"Groundwater recharging well, stable levels observed."
+32,Bannerghatta,02-03-2024,Lake,50%,7.4,20 NTU,Insufficient,"Declining water levels continue, conservation advised."
+33,Basaveshwaranagar,02-03-2024,River,Flow rate: 6 cubic meters per second,7.6,10 NTU,Critical,"River flow reduced further, urgent attention required."
+34,Koramangala,03-03-2024,Groundwater,13,7.0,7 NTU,Adequate,Groundwater levels rising steadily.
+35,Jayanagar,03-03-2024,Reservoir,50%,7.2,15 NTU,Adequate,Slight decrease in reservoir levels observed.
+36,Malleshwaram,03-03-2024,Lake,42%,7.4,18 NTU,Insufficient,Further decrease in lake levels reported.
+37,Indiranagar,03-03-2024,River,Flow rate: 6 cubic meters per second,7.6,9 NTU,Critical,"Decline in river flow continues, urgent action needed."
+38,Whitefield,03-03-2024,Reservoir,60%,7.1,14 NTU,Adequate,Reservoir levels stable.
+39,Electronic City,03-03-2024,Groundwater,17,7.2,5 NTU,Adequate,Groundwater levels holding steady.
+40,Yelahanka,03-03-2024,Lake,50%,7.5,25 NTU,Insufficient,Significant decrease in lake levels observed.
+41,BTM Layout,03-03-2024,Reservoir,40%,7.0,8 NTU,Adequate,Moderate decrease in reservoir levels.
+42,HSR Layout,03-03-2024,Groundwater,17.5,7.3,6 NTU,Adequate,Groundwater levels stable.
+43,Hebbal,03-03-2024,River,Flow rate: 4 cubic meters per second,7.9,15 NTU,Critical,"Drastic reduction in river flow, urgent measures required."
+44,JP Nagar,03-03-2024,Reservoir,65%,7.0,7 NTU,Adequate,Slight increase in reservoir levels noted.
+45,Basavanagudi,03-03-2024,Lake,38%,7.2,12 NTU,Insufficient,Below-average rainfall continues to impact lake levels.
+46,Rajajinagar,03-03-2024,Groundwater,14,7.1,8 NTU,Adequate,Groundwater levels remain stable.
+47,Marathahalli,03-03-2024,Reservoir,55%,7.2,11 NTU,Adequate,Reservoir levels stable.
+48,Sarjapur,03-03-2024,Groundwater,18,7.3,4 NTU,Adequate,"Groundwater recharging well, stable levels observed."
+49,Bannerghatta,03-03-2024,Lake,45%,7.6,18 NTU,Insufficient,"Continued decline in lake levels, conservation advised."
+50,Basaveshwaranagar,03-03-2024,River,Flow rate: 5 cubic meters per second,7.8,11 NTU,Critical,"River flow further reduced, urgent attention required."
