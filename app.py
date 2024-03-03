@@ -104,30 +104,39 @@ def search():
         return render_template('index.html', city_names=city_names)
 
 def find_nearest_city(coord):
-    given_lat, given_lon = coord
+    # Parse the given coordinate
+    given_lat, given_lon = float(coord[0]), float(coord[1])
 
+    # Check if latitude is within valid range
     if not (-90 <= given_lat <= 90):
-        return None, "Latitude must be in the [-90; 90] range."
+        return None, "Latitude must be in the [-90; 90] range.", None
 
+    # Query all cities and their coordinates from the database
     cities = Location.query.all()
 
+    # Initialize variables for nearest city and distance
     nearest_city = None
     min_distance = float('inf')
 
+    # Loop through each city and calculate distance
     for city in cities:
         city_lat, city_lon = map(float, city.coordinates.split(','))
 
+        # Calculate distance between given coordinate and city's coordinates
         distance = geodesic((given_lat, given_lon), (city_lat, city_lon)).kilometers
 
+        # Check if the city is within 10 km radius and closest so far
         if distance < 10 and distance < min_distance:
             min_distance = distance
             nearest_city = city
 
+    # If nearest city found, query its water availability information
     if nearest_city:
         water_availability_info = WaterAvailability.query.filter_by(area=nearest_city.area).all()
         return {'city_name': nearest_city.area, 'distance': min_distance, 'water_availability_info': water_availability_info}, None, min_distance
     else:
-        return None, "No city found within 10 km radius."
+        return None, "No city found within 10 km radius.", None
+
 
 if __name__ == '__main__':
     with app.app_context():
